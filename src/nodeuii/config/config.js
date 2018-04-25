@@ -10,7 +10,7 @@ let config = {
 };
 const server = {
     //端口号配置
-    "port": 80
+    "port": 8080
 };
 //本地调试环境
 if (!config.env || config.env === 'development') {

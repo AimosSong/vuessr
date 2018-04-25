@@ -10,7 +10,6 @@ import controllers from './controllers/controllerInit';
 import historyApiFallback from 'koa2-history-api-fallback';
 import errorHandler from './middleware/errorHandler';
 import render from 'koa-swig';
-
 const url = require('url')
 const app = new Koa();
 app.context.render = co.wrap(render({
@@ -20,23 +19,35 @@ app.context.render = co.wrap(render({
     ext: 'html',
     writeBody: false
 }));
+console.log('服务器开关', config.env);
 if (config.env == "development") {
     const webpack = require('webpack');
     const { devMiddleware, hotMiddleware } = require('koa-webpack-middleware');
+    // const devMiddleware = convert(require('webpack-dev-middleware'));
+    // const hotMiddleware = convert(require('webpack-hot-middleware'));
     var devConfig = require('../config/webpack.dev');
-    const compile = webpack(devConfig);
+    const compile = webpack(devConfig)
     app.use(devMiddleware(compile, {
+        // display no info to console (only warnings and errors) 
         noInfo: false,
+        // display nothing to the console 
         quiet: false,
-        laze: false,
+        // switch into lazy mode 
+        // that means no watching, but recompilation on every request 
+        lazy: false,
+        // watch options (only lazy: false) 
         watchOptions: {
             aggregateTimeout: 300,
             poll: true
         },
-        publicPath: '/',
+        // public path to bind the middleware to 
+        // use the same as in webpack 
+        publicPath: "/",
+        // custom headers 
         headers: {
             "Access-Control-Allow-Origin": "*"
         },
+        // options for formating the statistics 
         stats: {
             colors: true
         }
@@ -48,14 +59,14 @@ if (config.env == "development") {
     }))
 }
 
-errorHandler.error(app);
-controllers.getAllrouters(app, router);
-app.use(serve(config.staticDir));
-
-
+errorHandler.error(app); //处理页面错误的处理句柄
+// app.use(require('koa-bigpipe'));
+controllers.getAllrouters(app, router); //初始化controllers
+// app.use(historyApiFallback({index: '/'});
+app.use(serve(config.staticDir)); // 静态资源文件
+//监听端口🐂😊
 const server = app.listen(config.port, () => {
     // server.keepAliveTimeout = 0;
-    console.log('VueSSR listening on port %s', config.port);
+    console.log('vueSSR listening on port %s', config.port);
 });
-
 module.exports = app;

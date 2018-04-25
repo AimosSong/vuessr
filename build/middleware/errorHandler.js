@@ -1,7 +1,11 @@
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 const errorHandler = {
     error(app) {
-        app.use(async(ctx, next) => {
+        app.use(async (ctx, next) => {
             try {
                 await next();
             } catch (err) {
@@ -10,7 +14,7 @@ const errorHandler = {
                 ctx.body = await ctx.render('500', { data: err.stack });
             }
         });
-        app.use(async(ctx, next) => {
+        app.use(async (ctx, next) => {
             await next();
             if (404 != ctx.status) return;
             ctx.status = 404;
@@ -18,5 +22,4 @@ const errorHandler = {
         });
     }
 };
-export
-default errorHandler;
+exports.default = errorHandler;

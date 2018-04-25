@@ -2,9 +2,12 @@
   <div id="app">
     <div class='ribbon'>
        <router-link to="/" exact><span>首页</span></router-link>
+       <router-link to="/topics/11"><span>异步数据</span></router-link>
+       <router-link to="/counter"><span>Vue原生事件</span></router-link>
        <router-link to="/about"><span>无状态组件</span></router-link>
+       <router-link to="/test"><span>异步组件</span></router-link>
      </div>
-     <img width="300px" src="./assets/logo.png">
+     <div><img width="300px" src="./assets/logo.png"> </div>
      <router-view class="view"></router-view>
   </div>
 </template>

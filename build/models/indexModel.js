@@ -1,5 +1,9 @@
-export
-default class indexModel {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+class indexModel {
     constructor(ctx) {}
     getData() {
         const _promise = new Promise((resolve, reject) => {
@@ -60,3 +64,4 @@ default class indexModel {
         return _promise;
     }
 }
+exports.default = indexModel;
