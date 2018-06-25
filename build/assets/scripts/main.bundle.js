@@ -15952,7 +15952,7 @@ function createRouter() {
     var router = new __WEBPACK_IMPORTED_MODULE_6_vue_router__["a" /* default */]({
         mode: 'history',
         base: __dirname,
-        routes: [{ path: '/index', component: __WEBPACK_IMPORTED_MODULE_1__components_Home_vue__["a" /* default */] }, { path: '/topics/:id', component: __WEBPACK_IMPORTED_MODULE_4__components_Topics_vue__["a" /* default */] }, { path: '/counter', component: __WEBPACK_IMPORTED_MODULE_3__components_Counter_vue__["a" /* default */] }, {
+        routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_1__components_Home_vue__["a" /* default */] }, { path: '/topics/:id', component: __WEBPACK_IMPORTED_MODULE_4__components_Topics_vue__["a" /* default */] }, { path: '/counter', component: __WEBPACK_IMPORTED_MODULE_3__components_Counter_vue__["a" /* default */] }, {
             path: '/about',
             component: function component() {
                 return new Promise(function(resolve) { resolve(); }).then(__webpack_require__.bind(null, 19));

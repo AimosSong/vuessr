@@ -22,15 +22,13 @@ let config = {
     "viewDir": _path2.default.join(__dirname, '..', 'views'),
     //静态文件所在的目录
     "staticDir": _path2.default.join(__dirname, '..', 'assets'),
-    "env": process.env.NODE_ENV //"development" production
+    "env": process.env.NODE_ENV //"development"
 }; //应用配置文件
 
 const server = {
-    //端口号配置
     "port": 8080
-};
-//本地调试环境
-if (!config.env || config.env === 'development') {
+    //本地调试环境
+};if (!config.env || config.env === 'development') {
     config = _lodash2.default.extend(config, _local2.default);
 } else {
     config = _lodash2.default.extend(config, server);

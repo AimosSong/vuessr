@@ -16,7 +16,7 @@ const controllerInit = {
             _.get('/', _indexController2.default.index());
             _.get('/about', _indexController2.default.index());
             _.get('/counter', _indexController2.default.index());
-            _.get('/topics/:id', _indexController2.default.index());
+            _.get('/topic/:id', _indexController2.default.index());
             _.get('/test', _indexController2.default.index());
             _.get('/index/getdata', _indexController2.default.getData());
         }));
